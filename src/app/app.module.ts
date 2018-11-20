@@ -7,12 +7,16 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { HomeComponent } from './home/home.component';
+import { ClientsComponent } from './home/clients/clients.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthenticationComponent,
-    NavbarComponent
+    NavbarComponent,
+    HomeComponent,
+    ClientsComponent
   ],
   imports: [
     BrowserModule,
