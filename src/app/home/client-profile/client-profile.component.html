@@ -1,0 +1,51 @@
+<header><vet-navbar></vet-navbar></header>
+<div class="container">
+  <p class="medium-text">Maria Griselda Garcia Flores</p>
+  <div class="row">
+      <img class="col s3 m2" src="assets/img/no-photo.png" />
+    <div class="col s9 m9">
+        <span class="attribute"><span class="attribute-name">Telefono :</span> 4542802</span>
+        <span class="attribute"><span class="attribute-name">Celular:</span> 75997855</span>
+        <span class="attribute"><span class="attribute-name">Dirección:</span> Av. 9 de Abril - Calle Haití</span>
+        <span class="attribute"><span class="attribute-name">Correo:</span> grissgarcia74@gmail.com</span>
+        <span class="attribute"><span class="attribute-name">Carnet:</span> 8007750</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s10 m5 l4 xl3" *ngFor="let pet of pets">
+      <div class="card center-align">
+        <div class="card-image">
+          <img [src]="pet.photo" height="250px">
+          <span class="card-title">{{pet.name}}</span>
+          <a class="btn-floating halfway-fab waves-effect waves-light green" (click)="checkPetClinicalRecords()"><i class="material-icons">arrow_downward</i></a>
+        </div>
+        <div class="card-content">
+          <p></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="white-space">
+    <a class="btn-floating btn-large waves-effect waves-light btn-red add-btn modal-trigger" href="#modal2"><i class="material-icons">add</i></a>
+</div>
+
+<!-- MODAL TO REGISTER NEW PET -->
+<div id="modal2" class="modal modal-fixed-footer green">
+    <div class="modal-content">
+      <h3>Añadir nueva mascota</h3>
+      <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="name" name="name" type="text" class="validate" required [(ngModel)]="newPet.name">
+                <label for="name">Nombre</label>
+              </div>
+            </div>
+          </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close waves-effect waves-green btn-flat" (click)="addNewPet()">Añadir</a>
+    </div>
+  </div>

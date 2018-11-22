@@ -25,7 +25,7 @@ a {
 }
 
 .full-screen {
-  height: calc(100vh - 56px);
+  height: 100vh;
   min-height: 520px;
 
   @media only screen and (min-width: 601px) {
@@ -37,7 +37,7 @@ a {
   background-color: #42A5F5 !important;
 }
 
-.btn {
+.btn-red {
   background-color: #ff154f !important;
   font-weight: 700;
 }
@@ -61,4 +61,23 @@ a {
   box-shadow: 0 1px 0 0 #ff154f !important;
 }
 
+.medium-text {
+  font-size: 35px;
+  font-weight: 77 !important;
+}
+
+.white-space {
+  height: 90px;
+}
+
+.add-btn {
+  position: fixed;
+  bottom: 2%;
+  right: 4%;
+}
+
+.attribute {
+  display: block;
+  margin: 3%;
+}
 
