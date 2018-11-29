@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
+import { AngularFireModule } from '@angular/fire';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +18,7 @@ import { PetClinicalRecordsComponent } from './home/pet-clinical-records/pet-cli
 import { ReservesComponent } from './home/reserves/reserves.component';
 import { ReserveConfirmationComponent } from './home/reserves/reserve-confirmation/reserve-confirmation.component';
 import { ReserveListComponent } from './home/reserves/reserve-list/reserve-list.component';
+import { PetListComponent } from './home/pet-list/pet-list.component';
 
 @NgModule({
   declarations: [
@@ -29,13 +31,15 @@ import { ReserveListComponent } from './home/reserves/reserve-list/reserve-list.
     PetClinicalRecordsComponent,
     ReservesComponent,
     ReserveConfirmationComponent,
-    ReserveListComponent
+    ReserveListComponent,
+    PetListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    AngularFireModule.initializeApp(environment.firebase, 'cachochos-vet'),
     HttpClientModule
   ],
   providers: [DatePipe],
