@@ -1,0 +1,36 @@
+<header>
+  <vet-navbar></vet-navbar>
+</header>
+<div class="container">
+    <p class="medium-text">Lista de reservas</p>
+    <table class="">
+      <thead>
+        <tr>
+          <th>Código de reserva</th>
+          <th>Nombre del cliente</th>
+          <th>Celular</th>
+          <th>Fecha de reserva</th>
+          <th class="hide-on-small-only">Tipo de servicio</th>
+          <th>Veterinario</th>
+          <th class="hide-on-small-only">Fecha de creación</th>
+          <th class="hide-on-small-only">Estado</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let reserve of reserveList">
+          <td>{{reserve.reserveCode}}</td>
+          <td>{{reserve.clientName}}</td>
+          <td>{{reserve.cellphone}}</td>
+          <td>{{reserve.reserveDate}}</td>
+          <td class="hide-on-small-only">{{reserve.serviceType}}</td>
+          <td>{{reserve.veterinary}}</td>
+          <td class="hide-on-small-only">{{reserve.reserveCreationDate}}</td>
+          <td class="hide-on-small-only">{{reserve.reserveState}}</td>
+          <td>
+            <button class="waves-effect waves-light btn-small green" type="submit" name="action">Atendido</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

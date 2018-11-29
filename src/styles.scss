@@ -52,6 +52,16 @@ a {
   color: white !important;
 }
 
+.select-wrapper input.select-dropdown {
+  color: black !important;
+  border-bottom: 1px solid black !important;
+  box-shadow: 0 1px 0 0 white !important;
+}
+
+.select-wrapper ul.dropdown-content {
+  max-height: 500px;
+}
+
 .materialize-textarea {
   color: white;
 }
@@ -81,3 +91,6 @@ a {
   margin: 3%;
 }
 
+.datepicker-controls .select-month input {
+  width: 85px !important;
+}
