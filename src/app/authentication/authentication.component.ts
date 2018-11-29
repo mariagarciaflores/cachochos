@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'vet-authentication',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthenticationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  login(): void {
+    this.router.navigate(['/home']);
   }
 
 }

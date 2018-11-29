@@ -1,2 +1,96 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'node_modules/materialize-css/sass/materialize';
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  min-height: 100%;
+  width: 100%;
+  background-color: #42A5F5;
+  padding-top: 76px;
+
+  @media only screen and (min-width: 601px) {
+    padding-top: 84px;
+  }
+}
+
+a {
+  cursor: pointer;
+}
+
+.full-screen {
+  height: 100vh;
+  min-height: 520px;
+
+  @media only screen and (min-width: 601px) {
+    height: calc(100vh);
+  }
+}
+
+.main-color {
+  background-color: #42A5F5 !important;
+}
+
+.btn-red {
+  background-color: #ff154f !important;
+  font-weight: 700;
+}
+
+.input-field input {
+  color: white !important;
+  border-bottom: 1px solid white !important;
+  box-shadow: 0 1px 0 0 white !important;
+}
+
+.input-field label {
+  color: white !important;
+}
+
+.select-wrapper input.select-dropdown {
+  color: black !important;
+  border-bottom: 1px solid black !important;
+  box-shadow: 0 1px 0 0 white !important;
+}
+
+.select-wrapper ul.dropdown-content {
+  max-height: 500px;
+}
+
+.materialize-textarea {
+  color: white;
+}
+
+.materialize-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #ff154f !important;
+  box-shadow: 0 1px 0 0 #ff154f !important;
+}
+
+.medium-text {
+  font-size: 35px;
+  font-weight: 77 !important;
+}
+
+.white-space {
+  height: 90px;
+}
+
+.add-btn {
+  position: fixed;
+  bottom: 2%;
+  right: 4%;
+}
+
+.attribute {
+  display: block;
+  margin: 3%;
+}
+
+.datepicker-controls .select-month input {
+  width: 85px !important;
+}
