@@ -6,8 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pet-list.component.scss']
 })
 export class PetListComponent implements OnInit {
+  pets$: Array<any>;
 
-  constructor() { }
+  constructor() { 
+    this.pets$ = [
+      {
+        name: 'Manchis',
+        owner: 'Maria Garcia Flores',
+        age: '3',
+        race: 'Chapi',
+        weight: '8Kg'
+      }
+    ];
+  }
 
   ngOnInit() {
   }

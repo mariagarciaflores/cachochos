@@ -15,19 +15,34 @@ export class ClientProfileComponent implements OnInit {
     };
     this.pets = [
       {
+        name: 'Manchis',
+        owner: 'Maria Garcia Flores',
         photo: "assets/img/dog1.png",
-        name: "Manchis",
+        age: '3',
+        race: 'Chapi',
+        weight: '8Kg'
       },
       {
+        name: 'Luna',
+        owner: 'Mauricio Arce Torrez',
         photo: "assets/img/cat4.png",
-        name: "Luna",
+        age: '5',
+        race: 'Chapi',
+        weight: '10Kg'
       },
       {
+        name: 'Huesos',
+        owner: 'Camila Ledezma',
         photo: "assets/img/bunny.png",
-        name: "Chuño",
+        age: '4',
+        race: 'Golden',
+        weight: '15Kg'
       }
     ];
   }
+ 
+  
+  
 
   ngOnInit() {
   }

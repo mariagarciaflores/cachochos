@@ -11,43 +11,19 @@ export class ReserveListComponent implements OnInit {
   constructor() {
     this.reserveList = [
       {
-        reserveCode: 'JHYGR777',
+        reserveUser: 'Mauricio Arce',
         clientName: 'Mauricio Arce',
-        cellphone: 77996059,
-        reserveDate: '29/11/2018 11:30',
+        reserveDate: '29/11/2018 15:30',
         serviceType: 'Esterilización',
-        veterinary: 'Juan martinez',
-        reserveCreationDate: '25/11/2018 22:00',
+        veterinary: 'Juan Martinez',
         reserveState: 'Reservado'
       },
       {
-        reserveCode: 'JHYGR777',
-        clientName: 'Mauricio Arce',
-        cellphone: 77996059,
+        reserveUser: 'José Luis Fuentes',
+        clientName: 'Rocio Torrico',
         reserveDate: '29/11/2018 11:30',
-        serviceType: 'Esterilización',
-        veterinary: 'Juan martinez',
-        reserveCreationDate: '25/11/2018 22:00',
-        reserveState: 'Reservado'
-      },
-      {
-        reserveCode: 'JHYGR777',
-        clientName: 'Mauricio Arce',
-        cellphone: 77996059,
-        reserveDate: '29/11/2018 11:30',
-        serviceType: 'Esterilización',
-        veterinary: 'Juan martinez',
-        reserveCreationDate: '25/11/2018 22:00',
-        reserveState: 'Reservado'
-      },
-      {
-        reserveCode: 'JHYGR777',
-        clientName: 'Mauricio Arce',
-        cellphone: 77996059,
-        reserveDate: '29/11/2018 11:30',
-        serviceType: 'Esterilización',
-        veterinary: 'Juan martinez',
-        reserveCreationDate: '25/11/2018 22:00',
+        serviceType: 'Consulta General',
+        veterinary: 'Eliana Meneses',
         reserveState: 'Reservado'
       }
     ];

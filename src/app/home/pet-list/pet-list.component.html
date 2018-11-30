@@ -1,3 +1,46 @@
-<p>
-  pet-list works!
-</p>
+<header>
+  <vet-navbar></vet-navbar>
+</header>
+<div class="container">
+  <p class="medium-text">Lista de mascotas</p>
+  <div class="row">
+    <form class="col s12 m8 l8 xl8">
+      <div class="row">
+        <div id="client-searcher" class="input-field col s12 m8 l8 xl8">
+          <i class="material-icons prefix">search</i>
+          <input id="search" type="text" placeholder="Escriba el nombre de la mascota" class="validate">
+          <label for="search"></label>
+        </div>
+      </div>
+    </form>
+  </div>
+  <table class="">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th class="hide-on-small-only">Dueño</th>
+        <th>Edad</th>
+        <th class="hide-on-small-only">Raza</th>
+        <th class="hide-on-small-only">Peso</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pet of pets$">
+        <td>{{pet.name}}</td>
+        <td class="hide-on-small-only">{{pet.owner}}</td>
+        <td>{{pet.age}}</td>
+        <td class="hide-on-small-only">{{pet.race}}</td>
+        <td class="hide-on-small-only">{{pet.weight}}</td>
+        <td>
+          <button class="waves-effect waves-light btn-small green" (click)="checkUserProfile()" type="submit" name="action">Ver
+            <i class="material-icons right">remove_red_eye</i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="white-space">
+  <a class="btn-floating btn-large waves-effect waves-light btn-red add-btn modal-trigger" href="#modal1"><i class="material-icons">add</i></a>
+</div>

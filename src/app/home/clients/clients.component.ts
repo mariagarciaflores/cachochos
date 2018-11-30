@@ -23,52 +23,7 @@ export class ClientsComponent implements OnInit {
     };
     this.clients$ = [
       {
-        name: 'Maria Griselda Garcia Flores',
-        phone: '4542802',
-        cellphone: '75997855',
-        address: 'Av. 9 de Abril',
-        email: 'grissgarcia74@gmail.com',
-        ci: '8007750',
-        photo: 'assets/img/no-photo.png'
-      },
-      {
-        name: 'Maria Griselda Garcia Flores',
-        phone: '4542802',
-        cellphone: '75997855',
-        address: 'Av. 9 de Abril',
-        email: 'grissgarcia74@gmail.com',
-        ci: '8007750',
-        photo: 'assets/img/no-photo.png'
-      },
-      {
-        name: 'Maria Griselda Garcia Flores',
-        phone: '4542802',
-        cellphone: '75997855',
-        address: 'Av. 9 de Abril',
-        email: 'grissgarcia74@gmail.com',
-        ci: '8007750',
-        photo: 'assets/img/no-photo.png'
-      },
-      {
-        name: 'Maria Griselda Garcia Flores',
-        phone: '4542802',
-        cellphone: '75997855',
-        address: 'Av. 9 de Abril',
-        email: 'grissgarcia74@gmail.com',
-        ci: '8007750',
-        photo: 'assets/img/no-photo.png'
-      },
-      {
-        name: 'Maria Griselda Garcia Flores',
-        phone: '4542802',
-        cellphone: '75997855',
-        address: 'Av. 9 de Abril',
-        email: 'grissgarcia74@gmail.com',
-        ci: '8007750',
-        photo: 'assets/img/no-photo.png'
-      },
-      {
-        name: 'Maria Griselda Garcia Flores',
+        name: 'Maria Garcia Flores',
         phone: '4542802',
         cellphone: '75997855',
         address: 'Av. 9 de Abril',

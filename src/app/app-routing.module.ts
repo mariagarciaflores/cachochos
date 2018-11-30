@@ -8,6 +8,7 @@ import { PetClinicalRecordsComponent } from './home/pet-clinical-records/pet-cli
 import { ReservesComponent } from './home/reserves/reserves.component';
 import { ReserveConfirmationComponent } from './home/reserves/reserve-confirmation/reserve-confirmation.component';
 import { ReserveListComponent } from './home/reserves/reserve-list/reserve-list.component';
+import { PetListComponent } from './home/pet-list/pet-list.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'reserve-list',
     component: ReserveListComponent
+  },
+  {
+    path: 'pet-list',
+    component: PetListComponent
   }
 ];
 

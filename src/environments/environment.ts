@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: '',
+    apiKey: 'AIzaSyBbj3r6I9-vzB7SZcmst-Bz8FdiylQ0f9M',
     authDomain: 'cachochos-vet.firebaseapp.com',
     databaseURL: 'https://cachochos-vet.firebaseio.com',
     projectId: 'cachochos-vet',
