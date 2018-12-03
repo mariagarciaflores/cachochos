@@ -2,33 +2,42 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { HomeComponent } from './home/home.component';
-import { ClientsComponent } from './home/clients/clients.component';
-import { ClientProfileComponent } from './home/client-profile/client-profile.component';
-import { PetClinicalRecordsComponent } from './home/pet-clinical-records/pet-clinical-records.component';
+import { ClientsComponent } from './users/clients/clients.component';
+import { ClientProfileComponent } from './users/clients/client-profile/client-profile.component';
+import { PetClinicalRecordsComponent } from './pets/pet-clinical-records/pet-clinical-records.component';
 import { ReservesComponent } from './home/reserves/reserves.component';
 import { ReserveConfirmationComponent } from './home/reserves/reserve-confirmation/reserve-confirmation.component';
 import { ReserveListComponent } from './home/reserves/reserve-list/reserve-list.component';
-import { PetListComponent } from './home/pet-list/pet-list.component';
+import { PetListComponent } from './pets/pet-list/pet-list.component';
+import { AuthenticationGuard } from './authentication/authentication.guard';
 
 const routes: Routes = [
   {
     path: '',
+    redirectTo: '/login',
+    pathMatch: 'full'
+  },
+  {
+    path: 'login',
     component: AuthenticationComponent
   },
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [
+      AuthenticationGuard
+    ]
   },
   {
     path: 'clients',
     component: ClientsComponent
   },
   {
-    path: 'client-profile',
+    path: 'client-profile/:id',
     component: ClientProfileComponent
   },
   {
-    path: 'pet-clinical-records',
+    path: 'pet-clinical-records/:id',
     component: PetClinicalRecordsComponent
   },
   {
@@ -36,7 +45,7 @@ const routes: Routes = [
     component: ReservesComponent
   },
   {
-    path: 'reserve-confirmation',
+    path: 'reserve-confirmation/:id',
     component: ReserveConfirmationComponent
   },
   {

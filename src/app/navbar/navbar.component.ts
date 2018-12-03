@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as M from 'materialize-css';
+import { AuthenticationService } from '../authentication/authentication.service';
 
 @Component({
   selector: 'vet-navbar',
@@ -8,7 +9,7 @@ import * as M from 'materialize-css';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(public auth: AuthenticationService) { }
 
   ngOnInit() {
     M.AutoInit();

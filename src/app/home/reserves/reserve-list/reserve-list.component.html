@@ -6,20 +6,21 @@
   <div id="reserve-filter" class="row">
     <div id="client-searcher" class="input-field col s12 m6 l6 xl6">
       <i class="material-icons prefix">search</i>
-      <input id="search" type="text" placeholder="Escriba el nombre del cliente" class="validate">
+      <input id="search" type="text" name="search" [(ngModel)]="search" (ngModelChange)="searchUser()" placeholder="Escriba el nombre del cliente"
+        class="validate">
       <label for="search"></label>
     </div>
     <div class="input-field col s12 m6 l6">
-        <i class="material-icons prefix">event</i>
-        <input id="reserve-date" type="text" class="datepicker">
-        <label for="reserve-date">Filtrar por fecha</label>
-      </div>
+      <i class="material-icons prefix">event</i>
+      <input id="reserve-date" type="text" class="datepicker" [(ngModel)]="date" (ngModelChange)="updateByDate()">
+      <label for="reserve-date">Filtrar por fecha</label>
+    </div>
   </div>
   <table class="">
     <thead>
       <tr>
         <th>Reservado por</th>
-        <th>Nombre del cliente</th>
+        <th>A nombre de</th>
         <th>Fecha de reserva</th>
         <th class="hide-on-small-only">Tipo de servicio</th>
         <th>Veterinario</th>
@@ -28,14 +29,17 @@
     </thead>
     <tbody>
       <tr *ngFor="let reserve of reserveList">
-        <td>{{reserve.reserveUser}}</td>
-        <td>{{reserve.clientName}}</td>
-        <td>{{reserve.reserveDate}}</td>
-        <td class="hide-on-small-only">{{reserve.serviceType}}</td>
-        <td>{{reserve.veterinary}}</td>
-        <td>
-          <button class="waves-effect waves-light btn-small green" type="submit" name="action">{{reserve.reserveState}}</button>
-        </td>
+        <ng-container *ngIf="reserve.visible">
+          <td>{{reserve.userName}}</td>
+          <td>{{reserve.reserveUserName}}</td>
+          <td>{{reserve.date.toDate() | date: 'dd/MM/yyyy hh:mm a'}}</td>
+          <td class="hide-on-small-only">{{reserve.typeOfService}}</td>
+          <td>{{reserve.vet}}</td>
+          <td>
+            <button class="waves-effect waves-light btn-small " [ngClass]="{'green': reserve.status === 'Reservado', 'red': reserve.status === 'Completado'}"
+              type="submit" name="action" (click)="changeStatus(reserve)">{{reserve.status}}</button>
+          </td>
+        </ng-container>
       </tr>
     </tbody>
   </table>

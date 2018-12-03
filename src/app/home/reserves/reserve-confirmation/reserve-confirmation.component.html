@@ -11,29 +11,29 @@
         </div>
         <div id="confirmation-data">
           <div class="row">
-            <i class="col s1 m1 l1 material-icons prefix">code</i>
-            <span class="col s4 m4 l4 bold">Código de reserva:</span>
-            <span class="col s7 m7 l7">LSGEY777</span>
+            <i class="col s1 m1 l1 material-icons prefix">person</i>
+            <span class="col s4 m4 l4 bold">Nombre:</span>
+            <span class="col s7 m7 l7">{{ (reserve$ | async)?.reserveUserName }}</span>
           </div>
           <div class="row">
             <i class="col s1 m1 l1 material-icons prefix">face</i>
             <span class="col s4 m4 l4 bold">Veterinario:</span>
-            <span class="col s7 m7 l7">Maria Garcia Flores</span>
+            <span class="col s7 m7 l7">{{ (reserve$ | async)?.vet }}</span>
           </div>
           <div class="row">
             <i class="col s1 m1 l1 material-icons prefix">pets</i>
             <span class="col s4 m4 l4 bold">Tipo de servicio:</span>
-            <span class="col s7 m7 l7"> Cirugía</span>
+            <span class="col s7 m7 l7"> {{ (reserve$ | async)?.typeOfService }}</span>
           </div>
           <div class="row">
             <i class="col s1 m1 l1 material-icons prefix">access_time</i>
             <span class="col s4 m4 l4 bold">Fecha de reserva:</span>
-            <span class="col s7 m7 l7"> Viernes 30 Nov, Hrs: 15:00</span>
+            <span class="col s7 m7 l7"> {{ (reserve$ | async)?.date.toDate() | date: 'dd/MM/yyyy hh:mm a' }}</span>
           </div>
           <div class="row">
             <i class="col s1 m1 l1 material-icons prefix">event_available</i>
             <span class="col s4 m4 l4 bold">Estado:</span>
-            <span class="col s7 m7 l7"> Reservado</span>
+            <span class="col s7 m7 l7"> {{ (reserve$ | async)?.status }}</span>
           </div>
         </div>
       </div>
