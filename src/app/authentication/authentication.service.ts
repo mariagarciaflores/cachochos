@@ -27,7 +27,7 @@ export class AuthenticationService {
           this.afAuth.auth
             .signInWithEmailAndPassword(email, password)
             .then(() => {
-              this.router.navigate(['/']);
+              this.router.navigate(['/clients']);
             })
             .catch(error => {
               if (error.code === 'auth/user-not-found') {

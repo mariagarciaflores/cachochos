@@ -14,7 +14,7 @@ import { AuthenticationGuard } from './authentication/authentication.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/clients',
+    redirectTo: '/login',
     pathMatch: 'full'
   },
   {
