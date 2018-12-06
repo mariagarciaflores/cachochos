@@ -4,6 +4,8 @@ import { ReserveService } from '../reserve.service';
 import { first } from 'rxjs/operators';
 import * as M from 'materialize-css';
 
+declare const $: any;
+
 @Component({
   selector: 'vet-reserve-list',
   templateUrl: './reserve-list.component.html',
@@ -19,7 +21,7 @@ export class ReserveListComponent implements OnInit {
   }
 
   ngOnInit() {
-    document.addEventListener('DOMContentLoaded', () => {
+    $(() => {
       this.initializeDatePicker();
     });
   }

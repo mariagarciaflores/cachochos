@@ -19,18 +19,18 @@
   <table class="">
     <thead>
       <tr>
-        <th>Reservado por</th>
+        <th class="hide-on-small-only">Reservado por</th>
         <th>A nombre de</th>
         <th>Fecha de reserva</th>
         <th class="hide-on-small-only">Tipo de servicio</th>
         <th>Veterinario</th>
-        <th class="hide-on-small-only">Estado</th>
+        <th>Estado</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let reserve of reserveList">
         <ng-container *ngIf="reserve.visible">
-          <td>{{reserve.userName}}</td>
+          <td class="hide-on-small-only">{{reserve.userName}}</td>
           <td>{{reserve.reserveUserName}}</td>
           <td>{{reserve.date.toDate() | date: 'dd/MM/yyyy hh:mm a'}}</td>
           <td class="hide-on-small-only">{{reserve.typeOfService}}</td>
