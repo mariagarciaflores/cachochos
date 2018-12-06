@@ -23,7 +23,8 @@ export class ClientProfileComponent implements OnInit {
   currentClientPicture: File;
   loggedUserIsAdmin: boolean;
 
-  private pictureFileReader: FileReader;
+  private petPictureFileReader: FileReader;
+  private clientPictureFileReader: FileReader;
   @ViewChild('petImage') private petImage: ElementRef;
   @ViewChild('clientImage') private clientImage: ElementRef;
 
@@ -40,12 +41,16 @@ export class ClientProfileComponent implements OnInit {
     this.newPet = {};
     this.loggedUserIsAdmin = false;
 
-    this.pictureFileReader = new FileReader();
+    this.petPictureFileReader = new FileReader();
+    this.clientPictureFileReader = new FileReader();
 
-    this.pictureFileReader.onloadend = () => {
-      this.petImage.nativeElement.src = this.pictureFileReader.result;
-      this.clientImage.nativeElement.src = this.pictureFileReader.result;
+    this.petPictureFileReader.onloadend = () => {
+      this.petImage.nativeElement.src = this.petPictureFileReader.result;
     };
+    
+    this.clientPictureFileReader.onloadend = () => {
+      this.clientImage.nativeElement.src = this.clientPictureFileReader.result;
+    }
   }
 
   ngOnInit() {
@@ -74,11 +79,12 @@ export class ClientProfileComponent implements OnInit {
       .createPet(this.newPet)
       .pipe(first())
       .subscribe(pet => {
+        console.log(this.currentClientPicture);
         if (this.currentPetPicture) {
           this.petService.savePetPicture(this.currentPetPicture, pet);
         }
+        this.setNewPet();
       });
-    this.setNewPet();
   }
 
   setNewPet() {
@@ -98,7 +104,7 @@ export class ClientProfileComponent implements OnInit {
     let picture = event.target.files[0];
     if (picture) {
       this.currentPetPicture = picture;
-      this.pictureFileReader.readAsDataURL(picture);
+      this.petPictureFileReader.readAsDataURL(picture);
     } else {
       this.currentPetPicture = null;
       this.petImage.nativeElement.src = 'assets/img/no-photo.png';
@@ -109,7 +115,7 @@ export class ClientProfileComponent implements OnInit {
     let picture = event.target.files[0];
     if (picture) {
       this.currentClientPicture = picture;
-      this.pictureFileReader.readAsDataURL(picture);
+      this.petPictureFileReader.readAsDataURL(picture);
       this.userService.saveClientPicture(this.currentClientPicture, this.client);
     } else {
       this.currentClientPicture = null;
