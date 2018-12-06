@@ -21,7 +21,4 @@ export class AuthenticationComponent implements OnInit {
 
   ngOnInit() {}
 
-  login(): void {
-    this.router.navigate(['/home']);
-  }
 }

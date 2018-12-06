@@ -4,6 +4,7 @@ import * as firebase from 'firebase/app';
 import { UsersService } from '../users/users.service';
 import { Router } from '@angular/router';
 import { first, map, switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,7 @@ export class AuthenticationService {
           this.afAuth.auth
             .signInWithEmailAndPassword(email, password)
             .then(() => {
-              this.router.navigate(['/home']);
+              this.router.navigate(['/']);
             })
             .catch(error => {
               if (error.code === 'auth/user-not-found') {
@@ -50,10 +51,23 @@ export class AuthenticationService {
     return this.afAuth.authState;
   }
 
-  getLoggedUser() {
+  getLoggedUser(): Observable<any> {
     return this.getAuthState().pipe(
       switchMap(user => this.userService.getUserById(user.uid))
     );
+  }
+
+  hasAccess(user, url) {
+    switch (url) {
+      case '/clients':
+        return user.isAdmin;
+      case '/reserve-list':
+        return user.isAdmin;
+      case '/pet-list':
+        return user.isAdmin;
+      default:
+        return true;
+    }
   }
 
   private signUp(email, password, user) {
@@ -65,7 +79,7 @@ export class AuthenticationService {
           .pipe(first())
           .subscribe(
             () => {
-              this.router.navigate(['/home']);
+              this.router.navigate(['/']);
             },
             error => console.error(error)
           );

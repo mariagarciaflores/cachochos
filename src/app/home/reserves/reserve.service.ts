@@ -24,7 +24,7 @@ export class ReserveService {
       .valueChanges();
   }
 
-  getReservesByDateAndVet(startDate, endDate, vetId) {
+  getReservesByDateAndVet(startDate, endDate, vetId): Observable<any[]> {
     return this.fs
       .collection('reservations', ref =>
         ref
@@ -35,7 +35,7 @@ export class ReserveService {
       .valueChanges();
   }
 
-  getReservesByDate(startDate, endDate) {
+  getReservesByDate(startDate, endDate): Observable<any[]> {
     return this.fs
       .collection('reservations', ref =>
         ref
@@ -45,7 +45,7 @@ export class ReserveService {
       .valueChanges();
   }
 
-  getReservations() {
+  getReservations(): Observable<any[]> {
     return this.fs
       .collection('reservations', ref => ref.orderBy('date', 'desc'))
       .valueChanges();

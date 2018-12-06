@@ -2,15 +2,17 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { from, Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
+import { PetService } from '../pets/pet.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
-  constructor(private fs: AngularFirestore) {}
+  constructor(private pet: PetService, private fs: AngularFirestore) {}
 
   hardUpdateUser(oldId, uid, user): Observable<void> {
     user.id = uid;
+    this.pet.updatePetsOwner(oldId, uid);
     let x = from(
       this.fs
         .collection('users')
@@ -37,7 +39,7 @@ export class UsersService {
       .set(user, { merge: true });
   }
 
-  getClients() {
+  getClients(): Observable<any[]> {
     return this.fs
       .collection('users', ref => ref.where('isAdmin', '==', false))
       .valueChanges();

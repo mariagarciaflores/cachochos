@@ -6,6 +6,7 @@ import { DatePipe } from '@angular/common';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -44,6 +45,7 @@ import { PetListComponent } from './pets/pet-list/pet-list.component';
     AngularFireModule.initializeApp(environment.firebase, 'cachochos-vet'),
     AngularFireAuthModule,
     AngularFirestoreModule,
+    AngularFireStorageModule,
     HttpClientModule
   ],
   providers: [DatePipe],

@@ -24,6 +24,8 @@ const reserveHours = [
   '18:30'
 ];
 
+declare const $: any;
+
 @Component({
   selector: 'vet-reserves',
   templateUrl: './reserves.component.html',
@@ -44,11 +46,10 @@ export class ReservesComponent implements OnInit {
   ) {
     this.reserve = {};
     this.vets = [];
-    this.initializeDatePicker();
   }
 
   ngOnInit() {
-    document.addEventListener('DOMContentLoaded', () => {
+    $(() => {
       this.initializeDatePicker();
     });
     this.auth

@@ -14,7 +14,7 @@ import { AuthenticationGuard } from './authentication/authentication.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/login',
+    redirectTo: '/clients',
     pathMatch: 'full'
   },
   {
@@ -22,39 +22,39 @@ const routes: Routes = [
     component: AuthenticationComponent
   },
   {
-    path: 'home',
-    component: HomeComponent,
-    canActivate: [
-      AuthenticationGuard
-    ]
-  },
-  {
     path: 'clients',
-    component: ClientsComponent
+    component: ClientsComponent,
+    canActivate: [AuthenticationGuard]
   },
   {
     path: 'client-profile/:id',
-    component: ClientProfileComponent
+    component: ClientProfileComponent,
+    canActivate: [AuthenticationGuard]
   },
   {
     path: 'pet-clinical-records/:id',
-    component: PetClinicalRecordsComponent
+    component: PetClinicalRecordsComponent,
+    canActivate: [AuthenticationGuard]
   },
   {
     path: 'reserves',
-    component: ReservesComponent
+    component: ReservesComponent,
+    canActivate: [AuthenticationGuard]
   },
   {
     path: 'reserve-confirmation/:id',
-    component: ReserveConfirmationComponent
+    component: ReserveConfirmationComponent,
+    canActivate: [AuthenticationGuard]
   },
   {
     path: 'reserve-list',
-    component: ReserveListComponent
+    component: ReserveListComponent,
+    canActivate: [AuthenticationGuard]
   },
   {
     path: 'pet-list',
-    component: PetListComponent
+    component: PetListComponent,
+    canActivate: [AuthenticationGuard]
   }
 ];
 

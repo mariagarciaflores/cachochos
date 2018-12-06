@@ -13,20 +13,29 @@ import { first, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthenticationGuard implements CanActivate {
-  constructor(private authService: AuthenticationService, private router: Router) {}
+  constructor(
+    private authService: AuthenticationService,
+    private router: Router
+  ) {}
+
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-    return this.authService.getAuthState().pipe(
+    return this.authService.getLoggedUser().pipe(
       first(),
       map(user => {
         if (user) {
-          return true;
+          if (this.authService.hasAccess(user, state.url)) {
+            return true;
+          }
+          this.router.navigate(['/client-profile', user.id]);
+          return false;
         }
-        this.router.navigate(['/']);
+        this.router.navigate(['/login']);
         return false;
       })
     );
   }
+
 }

@@ -29,7 +29,7 @@
     </div>
   </div>
 </div>
-<div class="white-space">
+<div class="white-space" *ngIf="client.isAdmin">
   <a class="btn-floating btn-large waves-effect waves-light btn-red add-btn modal-trigger" href="#modal2"><i class="material-icons">add</i></a>
 </div>
 
@@ -39,7 +39,10 @@
     <h4 class="white-text">Añadir nueva mascota</h4>
     <div class="row">
       <div class="center-align">
-        <i class="material-icons prefix add-photo">add_a_photo</i>
+        <label for="upload-pet-photo">
+            <img #petImage src="assets/img/no-photo.png" height="150px">
+        </label>
+        <input style="display: none;" type="file" id="upload-pet-photo" accept=".jpeg, .jpg, .png" (change)="setPetPicture($event)">
       </div>
       <form class="col s12">
         <div class="row">
@@ -60,9 +63,9 @@
             <label for="weight">Peso</label>
           </div>
           <div class="input-field col s12">
-              <input id="description" name="description" type="text" class="validate" required [(ngModel)]="newPet.description">
-              <label for="description">Descripción</label>
-            </div>
+            <input id="description" name="description" type="text" class="validate" required [(ngModel)]="newPet.description">
+            <label for="description">Descripción</label>
+          </div>
         </div>
       </form>
     </div>
