@@ -4,7 +4,10 @@
 <div class="container">
   <p class="medium-text">{{client.name}}</p>
   <div class="row">
-    <img class="col s3 m2" src="assets/img/no-photo.png" />
+      <label for="upload-client-photo">
+          <img class="col s3 m2" #clientImage [src]="client.photo">
+      </label>
+      <input style="display: none;" type="file" id="upload-client-photo" accept=".jpeg, .jpg, .png" (change)="saveClientPicture($event)">
     <div class="col s9 m9">
       <span class="attribute"><span class="attribute-name">Teléfono:</span> {{client.phone}}</span>
       <span class="attribute"><span class="attribute-name">Celular:</span> {{client.cellphone}}</span>
@@ -29,7 +32,7 @@
     </div>
   </div>
 </div>
-<div class="white-space" *ngIf="client.isAdmin">
+<div class="white-space" *ngIf="loggedUserIsAdmin">
   <a class="btn-floating btn-large waves-effect waves-light btn-red add-btn modal-trigger" href="#modal2"><i class="material-icons">add</i></a>
 </div>
 
@@ -40,7 +43,7 @@
     <div class="row">
       <div class="center-align">
         <label for="upload-pet-photo">
-            <img #petImage src="assets/img/no-photo.png" height="150px">
+            <img #petImage src="assets/img/pet-photo.png" height="150px">
         </label>
         <input style="display: none;" type="file" id="upload-pet-photo" accept=".jpeg, .jpg, .png" (change)="setPetPicture($event)">
       </div>
