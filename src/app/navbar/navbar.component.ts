@@ -10,8 +10,10 @@ import { first } from 'rxjs/operators';
 })
 export class NavbarComponent implements OnInit {
   currentUser: any;
+  loggedUserName: string;
 
   constructor(public auth: AuthenticationService) {
+    this.loggedUserName = '';
     this.currentUser = {
       isAdmin: false
     };
@@ -20,6 +22,7 @@ export class NavbarComponent implements OnInit {
       .pipe(first())
       .subscribe(user => {
         this.currentUser = user;
+        this.loggedUserName = this.currentUser.name.split(' ')[0];
       });
   }
 
