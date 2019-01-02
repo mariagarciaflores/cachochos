@@ -1,0 +1,69 @@
+<header><vet-navbar></vet-navbar></header>
+<div class="container">
+  <p class="medium-text">{{ (pet$ | async)?.name }}</p>
+  <div class="row">
+      <img class="col s3 m2 circle" [src]="petPhotoURL" />
+    <div class="col s9 m9">
+        <span class="attribute"><span class="attribute-name">Dueño:</span> {{ (owner$ | async)?.name }}</span>
+        <span class="attribute"><span class="attribute-name">Raza:</span> {{ (pet$ | async)?.race }}</span>
+        <span class="attribute"><span class="attribute-name">Edad:</span> {{ (pet$ | async)?.age }}</span>
+        <span class="attribute"><span class="attribute-name">Peso:</span> {{ (pet$ | async)?.weight }} Kg</span>
+        <span class="attribute"><span class="attribute-name">Descripción:</span> {{ (pet$ | async)?.description }}</span>
+    </div>
+  </div>
+  <div class="row">
+    <ul class="collapsible">
+      <li *ngFor="let clinicalRecord of clinicalRecords$ | async">
+        <div class="collapsible-header"><i class="material-icons">chevron_right</i>Historial: {{clinicalRecord.creationDate.toDate() | date: 'dd/MM/yyyy hh:mm a'}}</div>
+        <div class="collapsible-body">
+            <span class="attribute"><span class="attribute-name">Fecha de creación:</span> {{clinicalRecord.creationDate.toDate() | date: 'dd/MM/yyyy hh:mm a'}}</span>
+            <span class="attribute"><span class="attribute-name">Razón de la consulta:</span> {{clinicalRecord.typeOfService}}</span>
+            <span class="attribute"><span class="attribute-name">Síntomas:</span> {{clinicalRecord.symptom}}</span>
+            <span class="attribute"><span class="attribute-name">Observaciones:</span> {{clinicalRecord.Observations}}</span>
+            <span class="attribute"><span class="attribute-name">Tratamiento:</span> {{clinicalRecord.treatment}}</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="white-space" *ngIf="loggedUserIsAdmin">
+    <a class="btn-floating btn-large waves-effect waves-light btn-red add-btn modal-trigger" href="#modal3"><i class="material-icons">add</i></a>
+</div>
+
+ <!-- MODAL TO CREATE NEW CLINICAL RECORD -->
+ <div id="modal3" class="modal modal-fixed-footer green">
+    <div class="modal-content">
+      <h4 class="white-text">Añadir historial médico</h4>
+      <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="service" name="service" type="text" class="validate" required [(ngModel)]="newClinicalRecord.typeOfService">
+                <label for="service">Razón de la consulta</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="symptom" name="symptom" type="text" class="validate" required [(ngModel)]="newClinicalRecord.symptom">
+                <label for="symptom">Síntomas</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="Observations" name="Observations" type="text" class="validate" required [(ngModel)]="newClinicalRecord.Observations">
+                <label for="Observations">Observaciones</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="treatment" name="treatment" type="text" class="validate" required [(ngModel)]="newClinicalRecord.treatment">
+                <label for="treatment">Tratamiento</label>
+              </div>
+            </div>
+          </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close waves-effect waves-green btn-flat" (click)="addClinicalRecord()">Añadir</a>
+    </div>
+  </div>

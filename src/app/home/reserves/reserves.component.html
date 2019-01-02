@@ -1,10 +1,10 @@
 <header>
   <vet-navbar></vet-navbar>
 </header>
-<div class="container">
+<div class="container" id="reserve-container">
   <p class="medium-text">Reservas</p>
-  <div id="reserve-container" class="row">
-    <form class="col s12 m10 l10">
+  <div class="row">
+    <form #selectDate="ngForm" class="col s12 m10 l10">
       <div class="row">
         <div class="input-field col s12 m6 l6">
           <i class="material-icons prefix">event</i>
@@ -13,59 +13,57 @@
         </div>
         <div class="input-field col s12 m6 l6">
           <i class="material-icons prefix">pets</i>
-          <select>
+          <select [(ngModel)]="serviceType" name="service-type">
             <option value="" disabled selected>Elije el servicio</option>
-            <option value="hairCut">Corte de pelo</option>
-            <option value="vaccination">Vacunación</option>
-            <option value="surgery">Cirugía</option>
-            <option value="sterilization">Esterilización</option>
-            <option value="general">Consulta general</option>
+            <option value="Corte de pelo">Corte de pelo</option>
+            <option value="Vacunación">Vacunación</option>
+            <option value="Cirugía">Cirugía</option>
+            <option value="Esterilización">Esterilización</option>
+            <option value="Consulta general">Consulta general</option>
           </select>
           <label>Servicio</label>
         </div>
       </div>
     </form>
     <div class="col s12 m2 l2 search-btn">
-      <button class="waves-effect waves-light btn-small btn-red" type="submit" name="action">Buscar
+      <button class="waves-effect waves-light btn-small btn-red" name="action" (click)="searchVets()" [disabled]="!this.reserve.date || !this.serviceType">Buscar
         <i class="material-icons left">search</i>
       </button>
     </div>
   </div>
   <div class="row">
-    <div class="col s10 m5 l4 xl5">
+    <div class="col s10 m5 l4 xl5" *ngFor="let vet of vets">
       <div class="card">
         <div class="card-image waves-effect waves-block waves-light">
-          <img class="activator" src="assets/img/cat4.png">
+          <img class="activator" [src]="vet.photo">
         </div>
         <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">Juan Martinez</span>
-          <form class="row">
-            <div class="input-field col s12 m12 l12">
-              <i class="material-icons prefix">access_time</i>
-              <select>
-                <option value="" disabled selected>Elije la hora</option>
-                <option value="">8:30</option>
-                <option value="">9:00</option>
-                <option value="">9:30</option>
-                <option value="">10:00</option>
-                <option value="">10:30</option>
-                <option value="">11:00</option>
-                <option value="">11:30</option>
-                <option value="">14:30</option>
-                <option value="">15:00</option>
-                <option value="">15:30</option>
-                <option value="">16:00</option>
-                <option value="">16:30</option>
-                <option value="">17:00</option>
-                <option value="">17:30</option>
-                <option value="">18:00</option>
-                <option value="">18:30</option>
-              </select>
-              <label>Servicio</label>
+          <span class="card-title activator grey-text text-darken-4">{{ vet.name }}</span>
+          <form #selectHour="ngForm" novalidate>
+            <div class="row">
+              <div class="input-field col s12 m12 l12">
+                <i class="material-icons prefix">access_time</i>
+                <select class="select-hours" [(ngModel)]="serviceHour" name="service-hours">
+                  <option value="" disabled selected>Elije la hora</option>
+                  <option *ngFor="let hour of vet.availableHours" [value]="hour">{{hour}}</option>
+                </select>
+                <label>Servicio</label>
+              </div>
+            </div>
+            <div class="row">
+              <div id="client-searcher" class="input-field col s12 m12 l12">
+                <i class="material-icons prefix">search</i>
+                <input id="search" type="text" placeholder="Escriba el nombre" class="validate" name="reserve-user-name"
+                  [(ngModel)]="vet.reserveUserName">
+                <label for="search"></label>
+              </div>
             </div>
           </form>
           <div class="center-align">
-            <button class="waves-effect waves-light btn-small btn-red" type="submit" name="action" (click)="fillForm()">Reservar</button>
+            <button class="waves-effect waves-light btn-small btn-red" name="action" (click)="bock(vet)" [disabled]="!vet.availableHours.length">Reservar</button>
+          </div>
+          <div class="center-align">
+            <span class="red-text" *ngIf="!vet.availableHours.length">No hay horas disponibles</span>
           </div>
         </div>
       </div>

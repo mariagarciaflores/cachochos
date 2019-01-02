@@ -52,6 +52,15 @@ a {
   color: white !important;
 }
 
+#client-searcher label {
+  color: black !important;
+}
+
+#client-searcher input {
+  color: black !important;
+  border-bottom: 1px solid black !important;
+}
+
 .select-wrapper input.select-dropdown {
   color: black !important;
   border-bottom: 1px solid black !important;
@@ -93,4 +102,9 @@ a {
 
 .datepicker-controls .select-month input {
   width: 85px !important;
+}
+
+.add-photo {
+  color: white;
+  font-size: 57px !important;
 }
